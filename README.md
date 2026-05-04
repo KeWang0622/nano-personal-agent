@@ -1,7 +1,7 @@
 # nano-personal-agent
 
 <p align="center">
-  <img src="assets/hero.png" alt="nano-personal-agent — a personal AI agent in one Python file" width="100%">
+  <img src="assets/hero-guigui.jpg" alt="nano-personal-agent — your AI in one file, with GuiGui the turtle persona" width="100%">
 </p>
 
 <p align="center">
@@ -15,6 +15,14 @@
 
 No vector DB. No framework. No platform. The prompt cache is the index.
 
+<p align="center">
+  <img src="assets/demo.gif" alt="real session: write a memory in turn 1, recall it from cache in turn 2" width="80%">
+</p>
+
+<details>
+<summary><b>The 6-line agent loop</b> (click to expand)</summary>
+<br>
+
 ```python
 while True:
     r = client.messages.create(model=M, system=PERSONA_PLUS_MEMORY,
@@ -26,6 +34,8 @@ while True:
 ```
 
 That's the loop. The other ~810 lines are persona loading, memory I/O, skill catalog, prompt-cache layout, safety guards, ANSI rendering, and a slash-command REPL. [Read it.](./agent.py)
+
+</details>
 
 ---
 
