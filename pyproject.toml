@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nano-personal-agent"
+version = "0.1.0"
+description = "A personal AI agent in one file. Persona, persistent memory, self-improving skills."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ke Wang" }]
+keywords = ["ai", "agent", "personal-ai", "claude", "anthropic", "memory", "skills"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "anthropic>=0.40.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/KeWang0622/nano-personal-agent"
+Repository = "https://github.com/KeWang0622/nano-personal-agent"
+Issues = "https://github.com/KeWang0622/nano-personal-agent/issues"
+
+[project.scripts]
+nanoagent = "agent:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.hatch.build.targets.wheel]
+include = ["agent.py", "persona.md", "skills/"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"agent.py" = "agent.py"
+"persona.md" = "persona.md"
