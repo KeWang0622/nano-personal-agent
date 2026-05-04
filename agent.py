@@ -711,10 +711,14 @@ def agent_turn(client, model: str, msgs: list, meter: Meter, log: Path) -> None:
 
 
 def header(model: str) -> None:
-    bar = "─" * 60
+    inner_w = 60
+    bar = "─" * inner_w
+    title = f"  {BOLD}nano-personal-agent{RESET}  {DIM}model {model} · brain {HOME}{RESET}"
+    # plain-text length, ignoring ANSI escape codes
+    plain = re.sub(r"\033\[[0-9;]*m", "", title)
+    pad = max(0, inner_w - len(plain))
     print(f"{SUBTEXT}╭{bar}╮{RESET}")
-    print(f"{SUBTEXT}│{RESET}  {BOLD}nano-personal-agent{RESET}  "
-          f"{DIM}model {model} · brain {HOME}{RESET}")
+    print(f"{SUBTEXT}│{RESET}{title}{' ' * pad}{SUBTEXT}│{RESET}")
     print(f"{SUBTEXT}╰{bar}╯{RESET}")
     print(f"{DIM}/help for commands · ctrl-d to exit{RESET}\n")
 

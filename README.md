@@ -1,7 +1,7 @@
 # nano-personal-agent
 
 <p align="center">
-  <img src="assets/hero.png" alt="nano-personal-agent — a personal AI agent in 818 lines of Python" width="100%">
+  <img src="assets/hero.png" alt="nano-personal-agent — a personal AI agent in one Python file" width="100%">
 </p>
 
 <p align="center">
@@ -49,8 +49,8 @@ python agent.py
 ● remember({"fact": "prefers vim over vscode", "tags": ["pref"]})
 ● remember({"fact": "lives in pacific time", "tags": ["pref"]})
 turn 1 · $0.0116 · in 337 out 138 cache_r 0 cache_w 2261
-  ⎿ remembered: - [2026-05-03] #pref prefers vim over vscode
-  ⎿ remembered: - [2026-05-03] #pref lives in pacific time
+  ⎿ remembered: - [2026-05-04] #pref prefers vim over vscode
+  ⎿ remembered: - [2026-05-04] #pref lives in pacific time
 got it — vim and PT, locked in.
 turn 2 · $0.0124 · in 363 out 22 cache_r 2261 cache_w 0
 
@@ -96,7 +96,7 @@ The agent's entire state is three plain-text files plus a skills directory:
 │   ├── commit-msg/SKILL.md
 │   └── reflect/SKILL.md
 └── sessions/             # every conversation, JSONL replayable
-    └── 20260503-201422.jsonl
+    └── 20260504-201422.jsonl
 ```
 
 Open them in vim. Edit by hand. `git init` the directory. Push it to your dotfiles repo. Your AI follows you to every machine.
@@ -120,9 +120,10 @@ The agent calls `remember` automatically when you tell it a stable fact. To trig
 
 ```
 > /reflect
-remembered: 2 facts (vim preference, partner name)
-learned: 1 skill (sql-formatter)
-turn 4 · $0.0061 · cache_r 4823 cache_w 612
+● remember({"fact": "ships every Tuesday at 2pm PT", "tags": ["work"]})
+● learn_skill({"name": "release-notes", ...})
+remembered 1 fact, learned 1 skill (release-notes).
+turn 3 · $0.0061 · cache_r 4823 cache_w 612
 ```
 
 ---
@@ -183,9 +184,13 @@ The repo you cloned ships a **seed**: `persona.md` + a `skills/` directory. On f
 To fork someone else's agent — their persona, their skills, their voice:
 
 ```bash
-# replace the seed in this repo, then re-init your brain:
+# 1. replace the seed in your clone of this repo
 curl -L https://github.com/<them>/their-nanoagent/raw/main/persona.md > persona.md
-rm -rf ~/.nanoagent && python agent.py    # re-seeds from the new persona.md
+
+# 2. wipe your existing brain so it re-seeds from the new persona
+#    (use the agent's safe /reset brain command from inside the REPL,
+#     or rm -rf ~/.nanoagent if you're sure you want a clean slate)
+python agent.py    # type /reset brain → YES → /quit, then python agent.py again
 ```
 
 You get **their persona and their starter skills**. You do NOT get their memory — `memory.md` is regenerated empty on first run, and your own `~/.nanoagent/memory.md` is local-only (never committed if you treat the brain dir as private).
