@@ -19,6 +19,13 @@ No vector DB. No framework. No platform. The prompt cache is the index.
   <img src="assets/demo.gif" alt="real session: write a memory in turn 1, recall it from cache in turn 2" width="80%">
 </p>
 
+<p align="center">
+  <a href="https://github.com/KeWang0622/nano-personal-agent/raw/main/assets/explainer.mp4">
+    <img src="assets/og-guigui.jpg" alt="▶ Watch the 75-second explainer — GuiGui walks through the cache thesis, the brain on disk, and the comparison vs Hermes/Letta/mem0/nanobot" width="80%">
+  </a>
+</p>
+<p align="center"><sub>▶ <a href="https://github.com/KeWang0622/nano-personal-agent/raw/main/assets/explainer.mp4">click to watch the 75-second explainer</a> — GuiGui talks through the whole pitch</sub></p>
+
 <details>
 <summary><b>The 6-line agent loop</b> (click to expand)</summary>
 <br>
